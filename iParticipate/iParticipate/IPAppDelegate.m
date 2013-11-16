@@ -22,11 +22,7 @@
     [rootViewController setViewControllers:@[[[IPMyConstituencyViewController alloc] initWithNibName:NSStringFromClass([IPMyConstituencyViewController class]) bundle:nil], [[UIViewController alloc] init]]];
     
     self.window.rootViewController = rootViewController;
-    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:IPChosenConstituencyKey] == NO) {
-        
-    }
-    
+
     [self.window makeKeyAndVisible];
     return YES;
 }

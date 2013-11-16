@@ -26,6 +26,10 @@
 		50D1A0181837C37300B9172B /* IPLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D1A0171837C37300B9172B /* IPLocationManager.m */; };
 		50D1A01C1837C63A00B9172B /* IPMyConstituencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D1A01A1837C63A00B9172B /* IPMyConstituencyViewController.m */; };
 		50D1A01D1837C63A00B9172B /* IPMyConstituencyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50D1A01B1837C63A00B9172B /* IPMyConstituencyViewController.xib */; };
+		50D1A0221837D88F00B9172B /* IPIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D1A0211837D88F00B9172B /* IPIdentity.m */; };
+		50D1A0281837DA8500B9172B /* IPAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D1A0271837DA8500B9172B /* IPAPIClient.m */; };
+		50D1A02B1837DA8F00B9172B /* IPAPIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D1A02A1837DA8F00B9172B /* IPAPIRequest.m */; };
+		50D1A0311837DC2100B9172B /* IPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D1A0301837DC2100B9172B /* IPModel.m */; };
 		7E980498B1C94333B608C48F /* libPods-iParticipate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B69CD563FD445CC9F3CCC56 /* libPods-iParticipate.a */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +73,14 @@
 		50D1A0191837C63A00B9172B /* IPMyConstituencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPMyConstituencyViewController.h; sourceTree = "<group>"; };
 		50D1A01A1837C63A00B9172B /* IPMyConstituencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPMyConstituencyViewController.m; sourceTree = "<group>"; };
 		50D1A01B1837C63A00B9172B /* IPMyConstituencyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IPMyConstituencyViewController.xib; sourceTree = "<group>"; };
+		50D1A0201837D88F00B9172B /* IPIdentity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPIdentity.h; sourceTree = "<group>"; };
+		50D1A0211837D88F00B9172B /* IPIdentity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPIdentity.m; sourceTree = "<group>"; };
+		50D1A0261837DA8500B9172B /* IPAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPAPIClient.h; sourceTree = "<group>"; };
+		50D1A0271837DA8500B9172B /* IPAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPAPIClient.m; sourceTree = "<group>"; };
+		50D1A0291837DA8F00B9172B /* IPAPIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPAPIRequest.h; sourceTree = "<group>"; };
+		50D1A02A1837DA8F00B9172B /* IPAPIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPAPIRequest.m; sourceTree = "<group>"; };
+		50D1A02F1837DC2100B9172B /* IPModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPModel.h; sourceTree = "<group>"; };
+		50D1A0301837DC2100B9172B /* IPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPModel.m; sourceTree = "<group>"; };
 		6B69CD563FD445CC9F3CCC56 /* libPods-iParticipate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iParticipate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -144,6 +156,7 @@
 				50D1A0191837C63A00B9172B /* IPMyConstituencyViewController.h */,
 				50D1A01A1837C63A00B9172B /* IPMyConstituencyViewController.m */,
 				50D1A01B1837C63A00B9172B /* IPMyConstituencyViewController.xib */,
+				50D1A01F1837D88100B9172B /* Networking */,
 				508FFC751837BBAF002E0CF6 /* AppDelegate */,
 				508FFC4D1837BBAA002E0CF6 /* Supporting Files */,
 				508FFC791837BC01002E0CF6 /* Global */,
@@ -197,6 +210,37 @@
 				508FFC761837BBC1002E0CF6 /* Constants.h */,
 			);
 			name = Global;
+			sourceTree = "<group>";
+		};
+		50D1A01F1837D88100B9172B /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				50D1A0251837DA6F00B9172B /* Wrapper */,
+				50D1A0241837DA6900B9172B /* Models */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		50D1A0241837DA6900B9172B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				50D1A02F1837DC2100B9172B /* IPModel.h */,
+				50D1A0301837DC2100B9172B /* IPModel.m */,
+				50D1A0201837D88F00B9172B /* IPIdentity.h */,
+				50D1A0211837D88F00B9172B /* IPIdentity.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		50D1A0251837DA6F00B9172B /* Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				50D1A0261837DA8500B9172B /* IPAPIClient.h */,
+				50D1A0271837DA8500B9172B /* IPAPIClient.m */,
+				50D1A0291837DA8F00B9172B /* IPAPIRequest.h */,
+				50D1A02A1837DA8F00B9172B /* IPAPIRequest.m */,
+			);
+			name = Wrapper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,8 +378,12 @@
 			files = (
 				508FFC531837BBAA002E0CF6 /* main.m in Sources */,
 				50D1A0101837C2FF00B9172B /* IPChooseConstituencyViewController.m in Sources */,
+				50D1A0281837DA8500B9172B /* IPAPIClient.m in Sources */,
 				508FFC571837BBAA002E0CF6 /* IPAppDelegate.m in Sources */,
+				50D1A0311837DC2100B9172B /* IPModel.m in Sources */,
 				50D1A01C1837C63A00B9172B /* IPMyConstituencyViewController.m in Sources */,
+				50D1A02B1837DA8F00B9172B /* IPAPIRequest.m in Sources */,
+				50D1A0221837D88F00B9172B /* IPIdentity.m in Sources */,
 				50D1A0181837C37300B9172B /* IPLocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

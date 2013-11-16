@@ -9,16 +9,25 @@
 #import "IPChooseConstituencyViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "IPLocationManager.h"
+#import "IPAPIRequest.h"
+#import "IPAPIClient.h"
+#import "IPIdentity.h"
+#import "JSONModel.h"
 
 @implementation IPChooseConstituencyViewController
 
 - (void)viewDidLoad {
     [self.mapView setShowsUserLocation:YES];
+    [self.mapView setUserInteractionEnabled:NO];
     [super viewDidLoad];
 }
 
 - (id <MKAnnotation>) userAnnotation {
     return [[self.mapView annotations] firstObject];
+}
+
+- (BOOL) disablesAutomaticKeyboardDismissal {
+    return NO;
 }
 
 - (void) mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
@@ -36,7 +45,7 @@
         else {
             CLPlacemark *placemark = [placemarks firstObject];
             if ([[placemark ISOcountryCode] isEqualToString:@"GB"]) {
-                
+                [self performNetworkRequestWithCoordinate:userLocation.location.coordinate];
             }
             else {
                 [self makeUserEnterPostcode];
@@ -47,6 +56,69 @@
 
 - (void) makeUserEnterPostcode {
     
+    [UIView animateWithDuration:0.3f animations:^{
+        [self.statusLabel setText:@"Unable to find your constituency, please enter your postcode:"];
+        [self.constituencyLabel setAlpha:0.0f];
+        [self.validateLabel setAlpha:0.0f];
+        [self.buttons enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [self.buttons[idx] setAlpha:0.0f];
+        }];
+        [self.textField setHidden:NO];
+        
+    } completion:^(BOOL finished) {
+        [self.constituencyLabel removeFromSuperview];
+        [self.validateLabel removeFromSuperview];
+        [self.buttons enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [self.buttons[idx] removeFromSuperview];
+        }];
+    }];
+}
+
+- (BOOL) postcodeIsValid:(NSString *) postcode {
+    return [[NSPredicate predicateWithFormat:@"SELF MATCHES '^[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? ?[0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}'"] evaluateWithObject:postcode];
+}
+
+- (BOOL) textFieldShouldBeginEditing:(UITextField *)textField {
+    [self.scrollView setContentOffset:CGPointMake(0, 150) animated:YES];
+    return YES;
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    BOOL isValid = [self postcodeIsValid:[textField text]];
+    if (isValid) {
+        [self.scrollView setContentOffset:CGPointZero animated:YES];
+    }
+    else {
+        [SVProgressHUD showErrorWithStatus:@"The postcode you entered is invalid."];
+        return NO;
+    }
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void) performNetworkRequestWithCoordinate:(CLLocationCoordinate2D) coord {
+    IPAPIRequest *request = [IPAPIRequest requestWithVerb:@"POST" path:@"identities.json"];
+    NSDictionary *data = @{@"latitude" : @(coord.latitude), @"longitude" : @(coord.longitude)};
+    NSData *json = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:nil];
+    [request setData:json];
+    [[IPAPIClient sharedClient] performRequest:request forModel:IPIdentity.class success:^(id object) {
+        NSLog(@"Success object: %@", object);
+    } failure:^(id error) {
+        NSLog(@"Fail error: %@", error);
+    }];
+}
+
+- (void) performNetworkRequestWithPostcode:(NSString *) postcode {
+    [[IPLocationManager sharedLocationManager] geocodeLocationString:postcode withCallback:^(NSArray *placemarks, NSError *error) {
+        if (error || placemarks.count == 0) {
+            [SVProgressHUD showErrorWithStatus:@"Error performing request with postcode"];
+            NSLog(@"%@", error);
+        }
+        else {
+            CLPlacemark *placemark = [placemarks firstObject];
+            [self performNetworkRequestWithCoordinate:placemark.location.coordinate];
+        }
+    }];
 }
 
 - (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
