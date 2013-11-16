@@ -8,6 +8,7 @@
 
 #import "IPMyConstituencyViewController.h"
 #import "IPChooseConstituencyViewController.h"
+#import "CKSideBarController.h"
 
 @interface IPMyConstituencyViewController ()
 
@@ -19,7 +20,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [self.sideBarItem setTitle:@"My Constituency"];
+        [self.sideBarItem setIsGlowing:YES];
     }
     return self;
 }

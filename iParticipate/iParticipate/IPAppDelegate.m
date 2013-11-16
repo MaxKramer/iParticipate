@@ -16,13 +16,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor blackColor];
     
     CKSideBarController *rootViewController = [[CKSideBarController alloc] init];
     [rootViewController setViewControllers:@[[[IPMyConstituencyViewController alloc] initWithNibName:NSStringFromClass([IPMyConstituencyViewController class]) bundle:nil], [[UIViewController alloc] init]]];
     
     self.window.rootViewController = rootViewController;
-
+        
     [self.window makeKeyAndVisible];
     return YES;
 }

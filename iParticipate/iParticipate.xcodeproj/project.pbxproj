@@ -270,6 +270,16 @@
 			path = JSONModelTransformations;
 			sourceTree = "<group>";
 		};
+		500E3E68183814C9008FB065 /* My Constituency */ = {
+			isa = PBXGroup;
+			children = (
+				50D1A0191837C63A00B9172B /* IPMyConstituencyViewController.h */,
+				50D1A01A1837C63A00B9172B /* IPMyConstituencyViewController.m */,
+				50D1A01B1837C63A00B9172B /* IPMyConstituencyViewController.xib */,
+			);
+			name = "My Constituency";
+			sourceTree = "<group>";
+		};
 		508FFC3A1837BBAA002E0CF6 = {
 			isa = PBXGroup;
 			children = (
@@ -309,9 +319,7 @@
 			children = (
 				50D1A0421838078A00B9172B /* Subclasses */,
 				50D1A0411838077A00B9172B /* Choose Constituency MVC */,
-				50D1A0191837C63A00B9172B /* IPMyConstituencyViewController.h */,
-				50D1A01A1837C63A00B9172B /* IPMyConstituencyViewController.m */,
-				50D1A01B1837C63A00B9172B /* IPMyConstituencyViewController.xib */,
+				500E3E68183814C9008FB065 /* My Constituency */,
 				50D1A01F1837D88100B9172B /* Networking */,
 				508FFC751837BBAF002E0CF6 /* AppDelegate */,
 				508FFC4D1837BBAA002E0CF6 /* Supporting Files */,

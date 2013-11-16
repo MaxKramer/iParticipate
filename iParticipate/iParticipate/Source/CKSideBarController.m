@@ -174,6 +174,7 @@
     cell.unSelectedImage = sideBarItem.unSelectedImage;
     [cell setIsActive:(viewController == self.selectedViewController)];
     [cell setIsGlowing:sideBarItem.isGlowing];
+    [cell setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"rough_diagonal"]]];
 
     return cell;
 }
