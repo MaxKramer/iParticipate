@@ -1,20 +1,10 @@
 PODS:
-  - CKSideBarController (0.0.1)
-  - JSONModel (0.10.0)
   - SVProgressHUD (1.0)
 
 DEPENDENCIES:
-  - CKSideBarController (from `https://raw.github.com/MaxKramer/CKSideBarController/master/CKSideBarController.podspec`)
-  - JSONModel
   - SVProgressHUD
 
-EXTERNAL SOURCES:
-  CKSideBarController:
-    :podspec: https://raw.github.com/MaxKramer/CKSideBarController/master/CKSideBarController.podspec
-
 SPEC CHECKSUMS:
-  CKSideBarController: bc24f95dc7c811fc08d6e237886da797befe1aa1
-  JSONModel: cecca3c3a9ee1a248b56f7139e2d64b85ce536ec
   SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
 
 COCOAPODS: 0.28.0
