@@ -8,4 +8,4 @@
 
 static NSString *const IPChosenConstituencyKey = @"IPChosenConstituencyKey";
 static NSString *const IPAccessTokenKey = @"IPAccessTokenKey";
-static NSURL *const IPBaseURL = nil;
+#define IPBaseURL [NSURL URLWithString:@"http://54.204.32.159/v1/"]

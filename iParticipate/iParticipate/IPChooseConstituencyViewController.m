@@ -31,6 +31,9 @@
 }
 
 - (void) mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+    if (self.mapView.selectedAnnotations.count > 0) {
+        return;
+    }
     MKCoordinateRegion mapRegion = MKCoordinateRegionMake(mapView.userLocation.coordinate, MKCoordinateSpanMake(0.1, 0.1));
     [mapView setRegion:mapRegion animated:YES];
     [self.mapView selectAnnotation:[self userAnnotation] animated:YES];
@@ -97,12 +100,13 @@
 }
 
 - (void) performNetworkRequestWithCoordinate:(CLLocationCoordinate2D) coord {
-    IPAPIRequest *request = [IPAPIRequest requestWithVerb:@"POST" path:@"identities.json"];
-    NSDictionary *data = @{@"latitude" : @(coord.latitude), @"longitude" : @(coord.longitude)};
-    NSData *json = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:nil];
-    [request setData:json];
+    IPAPIRequest *request = [IPAPIRequest requestWithVerb:@"POST" path:[NSString stringWithFormat:@"identities.json?latitude=%f&longitude=%f", coord.latitude, coord.longitude]];
     [[IPAPIClient sharedClient] performRequest:request forModel:IPIdentity.class success:^(id object) {
-        NSLog(@"Success object: %@", object);
+        IPIdentity *identity = object;
+        NSString *token = [identity token];
+        [[NSUserDefaults standardUserDefaults] setObject:token forKey:IPAccessTokenKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
     } failure:^(id error) {
         NSLog(@"Fail error: %@", error);
     }];
