@@ -5,6 +5,7 @@ inhibit_all_warnings!
 target "iParticipate" do
 pod 'CKSideBarController', :podspec => 'https://raw.github.com/MaxKramer/CKSideBarController/master/CKSideBarController.podspec'
 pod 'SVProgressHUD'
+pod 'JSONModel'
 end
 
 target "iParticipateTests" do

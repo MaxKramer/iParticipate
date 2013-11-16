@@ -31,19 +31,22 @@
 - (void) geocodeUserLocation:(MKUserLocation *) userLocation {
     [[IPLocationManager sharedLocationManager] reverseGeocodeLocation:userLocation.location withCallback:^(NSArray *placemarks, NSError *error) {
         if (error || placemarks.count == 0) {
-            // make user enter post code
+            [self makeUserEnterPostcode];
         }
         else {
             CLPlacemark *placemark = [placemarks firstObject];
             if ([[placemark ISOcountryCode] isEqualToString:@"GB"]) {
-                NSString *constituency = placemark.subLocality;
+                
             }
             else {
-                
-                // make user enter post code
+                [self makeUserEnterPostcode];
             }
         }
     }];
+}
+
+- (void) makeUserEnterPostcode {
+    
 }
 
 - (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
