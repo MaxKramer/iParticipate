@@ -148,11 +148,8 @@
 		508FFC4C1837BBAA002E0CF6 /* iParticipate */ = {
 			isa = PBXGroup;
 			children = (
-				50D1A0161837C37300B9172B /* IPLocationManager.h */,
-				50D1A0171837C37300B9172B /* IPLocationManager.m */,
-				50D1A00D1837C2FF00B9172B /* IPChooseConstituencyViewController.h */,
-				50D1A00E1837C2FF00B9172B /* IPChooseConstituencyViewController.m */,
-				50D1A00F1837C2FF00B9172B /* IPChooseConstituencyViewController.xib */,
+				50D1A0421838078A00B9172B /* Subclasses */,
+				50D1A0411838077A00B9172B /* Choose Constituency MVC */,
 				50D1A0191837C63A00B9172B /* IPMyConstituencyViewController.h */,
 				50D1A01A1837C63A00B9172B /* IPMyConstituencyViewController.m */,
 				50D1A01B1837C63A00B9172B /* IPMyConstituencyViewController.xib */,
@@ -241,6 +238,33 @@
 				50D1A02A1837DA8F00B9172B /* IPAPIRequest.m */,
 			);
 			name = Wrapper;
+			sourceTree = "<group>";
+		};
+		50D1A0411838077A00B9172B /* Choose Constituency MVC */ = {
+			isa = PBXGroup;
+			children = (
+				50D1A00D1837C2FF00B9172B /* IPChooseConstituencyViewController.h */,
+				50D1A00E1837C2FF00B9172B /* IPChooseConstituencyViewController.m */,
+				50D1A00F1837C2FF00B9172B /* IPChooseConstituencyViewController.xib */,
+			);
+			name = "Choose Constituency MVC";
+			sourceTree = "<group>";
+		};
+		50D1A0421838078A00B9172B /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				50D1A0431838079200B9172B /* Location Manager */,
+			);
+			name = Subclasses;
+			sourceTree = "<group>";
+		};
+		50D1A0431838079200B9172B /* Location Manager */ = {
+			isa = PBXGroup;
+			children = (
+				50D1A0161837C37300B9172B /* IPLocationManager.h */,
+				50D1A0171837C37300B9172B /* IPLocationManager.m */,
+			);
+			name = "Location Manager";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

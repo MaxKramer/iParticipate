@@ -31,9 +31,11 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-    IPChooseConstituencyViewController *chooseConstituency = [[IPChooseConstituencyViewController alloc] initWithNibName:NSStringFromClass([IPChooseConstituencyViewController class]) bundle:nil];
-    [chooseConstituency setModalPresentationStyle:UIModalPresentationFormSheet];
-    [self presentViewController:chooseConstituency animated:YES completion:nil];
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:IPHasChosenConstituencyKey]) {
+        IPChooseConstituencyViewController *chooseConstituency = [[IPChooseConstituencyViewController alloc] initWithNibName:NSStringFromClass([IPChooseConstituencyViewController class]) bundle:nil];
+        [chooseConstituency setModalPresentationStyle:UIModalPresentationFormSheet];
+        [self presentViewController:chooseConstituency animated:YES completion:nil];
+    }
     [super viewDidAppear:animated];
 }
 

@@ -7,5 +7,7 @@
 //
 
 static NSString *const IPChosenConstituencyKey = @"IPChosenConstituencyKey";
+static NSString *const IPHasChosenConstituencyKey = @"IPHasChosenConstituencyKey";
+
 static NSString *const IPAccessTokenKey = @"IPAccessTokenKey";
 #define IPBaseURL [NSURL URLWithString:@"http://54.204.32.159/v1/"]

@@ -29,6 +29,9 @@
 - (IBAction) tappedButton:(id)sender {
     if ([sender isEqual:self.buttons[0]]) {
         [self dismissViewControllerAnimated:YES completion:nil];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:IPHasChosenConstituencyKey];
+        [[NSUserDefaults standardUserDefaults] setObject:[self.constituencyLabel text] forKey:IPChosenConstituencyKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
     else {
         [self makeUserEnterPostcode];
@@ -111,6 +114,9 @@
             else {
                 // move on...
                 [self.constituencyLabel setText:constituency];
+                [self.buttons enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                    [obj setEnabled:YES];
+                }];
             }
         }];
         
@@ -133,6 +139,7 @@
 }
 
 - (void) retrieveConstituencyFromCoordinate:(CLLocationCoordinate2D) coord callback:(void (^) (NSString *constituency, NSError *error)) callback{
+    callback(@"test", nil);
 //    IPAPIRequest *request = [IPAPIRequest requestWithVerb:@"GET" path:[NSString stringWithFormat:@"identities.json?latitude=%f&longitude=%f", coord.latitude, coord.longitude]];
 //    [[IPAPIClient sharedClient] performRequest:request forModel:IPIdentity.class success:^(id object) {
 //        IPIdentity *identity = object;
