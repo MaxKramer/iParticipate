@@ -22,7 +22,7 @@
     [rootViewController setViewControllers:@[[[IPMyConstituencyViewController alloc] initWithNibName:NSStringFromClass([IPMyConstituencyViewController class]) bundle:nil], [[UIViewController alloc] init]]];
     
     self.window.rootViewController = rootViewController;
-        
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
